@@ -60,14 +60,28 @@ This project is just an experiment, so this is not really serious stuff (for now
 To use it, require `"mnapoli/procedure"` in composer, and then here is an example of a front controller (`web/index.php`):
 
 ```php
-// Create the container (see PHP-DI's documentation)
+// Create and configure the container (see PHP-DI's documentation)
 $builder = new ContainerBuilder();
 $container = $builder->build();
 
-// Configure the HttpKernel
 $request = Request::createFromGlobals();
+$eventDispatcher = new EventDispatcher();
+
+// Routing
+$locator = new FileLocator(array(__DIR__ . '/../app/'));
+$context = new RequestContext();
+$context->fromRequest($request);
+$router = new Router(
+    new YamlFileLoader($locator),
+    'routing.yml',
+    array(),
+    $context
+);
+$eventDispatcher->addSubscriber(new RouterListener());
+
+// Configure the HttpKernel
 $resolver = new FunctionControllerResolver($container, new PSR4FunctionLoader());
-$kernel = new HttpKernel(new EventDispatcher(), $resolver);
+$kernel = new HttpKernel($eventDispatcher, $resolver);
 
 // Handle the request
 $response = $kernel->handle($request);
