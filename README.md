@@ -14,7 +14,7 @@ app/
 
 Routing configuration example:
 
-```
+```yml
 homepage:
     path:   /
     defaults:  { _controller: MyApp\Controller\home() }
@@ -22,7 +22,7 @@ homepage:
 
 Controller:
 
-```
+```php
 <?php
 
 namespace MyApp\Controller;
