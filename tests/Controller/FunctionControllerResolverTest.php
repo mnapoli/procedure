@@ -7,6 +7,9 @@ use Procedure\Controller\FunctionControllerResolver;
 use Procedure\FunctionLoader\FunctionLoaderInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @covers \Procedure\Controller\FunctionControllerResolver
+ */
 class FunctionControllerResolverTest extends \PHPUnit_Framework_TestCase
 {
     public function testNonRoutableRequest()
