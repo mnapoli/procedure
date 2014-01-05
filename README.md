@@ -1,5 +1,7 @@
 # Procedure
 
+[![Build Status](https://travis-ci.org/mnapoli/procedure.png?branch=master)](https://travis-ci.org/mnapoli/procedure) [![Coverage Status](https://coveralls.io/repos/mnapoli/procedure/badge.png)](https://coveralls.io/r/mnapoli/procedure)
+
 Standard project layout:
 
 ```
